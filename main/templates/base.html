@@ -1,14 +1,15 @@
 {% load bootstrap3 %}
-{% load static   %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title>Home: Instagram</title>
 
-    {% block style %}
-      {% bootstrap_css %}
-    {% endblock %}
+    {%block styles%}
+      {%bootstrap_css%}
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {%endblock%}
 
   </head>
   <body>
