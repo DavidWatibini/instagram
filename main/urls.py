@@ -5,4 +5,5 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.insta_index),
+    url(r'^home$',views.home_index),
 ]
