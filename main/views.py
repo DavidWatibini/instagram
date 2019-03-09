@@ -3,14 +3,8 @@ from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
-# def insta_index(request):
-#
-#     return render(request,'index.html')
 
-def home_index(request):
-
-    return render(request,'home.html')
-
+#first page - signup page
 def signup(request):
     if request.method=='POST':
         form = UserCreationForm(request.POST)
@@ -22,3 +16,8 @@ def signup(request):
         form = UserCreationForm()
 
     return render(request,'signup.html', {"form":form})
+
+#landing page - home page
+def home_index(request):
+
+    return render(request,'home.html')
