@@ -1,5 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
 {{ block.super}}
-<h3>welcome {{user.username}}</h3>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-10">
+      {% for image in index_images %}
+      <p>posted by name</p>
+      <p>{{image.image_location}}</p>
+      <img src="{{image.image_path.url}}" alt="{{user.username}" height="600px">
+      {% endfor %}
+    </div>
+    <div class="col-md-2">
+      <p>Profile {{user.username}}</p>
+    </div>
+  </div>
+</div>
 {% endblock %}

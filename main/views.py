@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
+from .models import Image,Location
 
 # Create your views here.
 
@@ -20,4 +21,6 @@ def signup(request):
 #landing page - home page
 def home_index(request):
 
-    return render(request,'home.html')
+    index_images = Image.objects.all()
+
+    return render(request,'home.html',  {'index_images':index_images})

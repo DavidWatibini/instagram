@@ -6,10 +6,14 @@ from datetime import datetime
 class Location(models.Model):
     location_det = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.location_det
+
 #models for inages
 class Image(models.Model):
-    username = models.ForeignKey(User)
     image_location = models.ForeignKey(Location)
     image_path = models.ImageField(upload_to = 'gallery/')
     image_description = models.TextField()
-    date_posted = db.Column(db.DateTime, 0nullable=False, default=datetime.utcnow)
+
+    def __str__(self):
+        return self.image_description
