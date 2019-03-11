@@ -16,7 +16,7 @@ class Image(models.Model):
     image_location = models.ForeignKey(Location)
     image_path = models.ImageField(upload_to = 'gallery/')
     image_description = models.TextField()
-    
+
 
     def __str__(self):
         return self.image_description
@@ -31,3 +31,11 @@ class Comments(models.Model):
 
     def __str__(self):
         return self.comment
+
+class Profile(models.Model):
+    profile_photo = models.ImageField(upload_to = 'profiles/')
+    first_name=models.TextField(max_length=30, blank=True)
+    last_name=models.TextField(max_length=30, blank=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    website=models.TextField(max_length=50, blank=True)
+    bio = models.TextField(max_length=500, blank=True)

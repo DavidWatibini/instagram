@@ -2,5 +2,13 @@
 {% block content %}
 {{ block.super}}
 {% load bootstrap4%}
-<p>my profile comes here</p>
+{% for profile in profiles %}
+<p>{{profile.first_name}}</p><span>{{profile.last_name}}</span>
+<p>{{profile.user}}</p>
+<p>{{profile.first_name}}</p>
+<p>{{profile.website}}</p>
+<p>{{profile.bio}}</p>
+<img src="{{profile.profile_photo.url}}" alt="">
+
+{% endfor %}
 {% endblock %}

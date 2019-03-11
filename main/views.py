@@ -38,4 +38,6 @@ def save_comment(request):
     return redirect('homePage')
 
 def profile_index(request):
-    return render(request,'profile.html')
+    profiles = Profile.objects.all()
+
+    return render(request,'profile.html', locals())

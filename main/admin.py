@@ -5,3 +5,4 @@ from .models import *
 admin.site.register(Location)
 admin.site.register(Image)
 admin.site.register(Comments)
+admin.site.register(Profile)
