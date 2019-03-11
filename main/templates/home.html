@@ -28,20 +28,9 @@
       {% endfor %}
     </div>
     <div class="col-md-2">
-      <p>Profile {{user.username}}</p>
+      <p>Profile <a href="/profile">{{user.username}}</a></p>
 
     </div>
   </div>
 </div>
 {% endblock %}
-<!-- <script type="text/javascript">
-  $(document).ready(function() {
-    if ($('#wati').val() == "false") {
-      $('#wati').val("true");
-    } else {
-      $('#wati').val("false");
-      location.reload();
-    }
-  });
-
-</script> -->

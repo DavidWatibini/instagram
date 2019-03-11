@@ -36,3 +36,6 @@ def save_comment(request):
     comments = Comments.objects.create(image_id=image,comment=comment)
     # return HttpResponse('request')
     return redirect('homePage')
+
+def profile_index(request):
+    return render(request,'profile.html')
