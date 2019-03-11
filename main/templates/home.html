@@ -1,18 +1,47 @@
 {% extends 'base.html' %}
 {% block content %}
 {{ block.super}}
+{% load bootstrap4%}
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-10">
       {% for image in index_images %}
-      <p>posted by name</p>
+      <p>{{image.username}}</p>
       <p>{{image.image_location}}</p>
-      <img src="{{image.image_path.url}}" alt="{{user.username}" height="600px">
+      <img src="{{image.image_path.url}}" alt="{{user.username}}" height="600px">
+      <form method='post' action='{% url ' comment'%}'>
+        {% csrf_token %}
+        {{ forms }}
+        <input type="hidden" id="wati" name="image_id" value="{{image.id}}">
+        <input type="submit" name='Submit' value="Submit">
+      </form>
+
+
+      {% for comment in comments%}
+      {% if comment.image_id.id == image.id%}
+      <p>{{comment.comment}}</p>
+      <p>{{comment.date_posted}}</p>
+
+      {% endif %}
+      {% endfor %}
+
       {% endfor %}
     </div>
     <div class="col-md-2">
       <p>Profile {{user.username}}</p>
+
     </div>
   </div>
 </div>
 {% endblock %}
+<!-- <script type="text/javascript">
+  $(document).ready(function() {
+    if ($('#wati').val() == "false") {
+      $('#wati').val("true");
+    } else {
+      $('#wati').val("false");
+      location.reload();
+    }
+  });
+
+</script> -->

@@ -1,5 +1,6 @@
 from django.db import models
-from datetime import datetime
+from django.contrib.auth.models import User
+import datetime as dt
 
 # Create your models here.
 #models for location
@@ -11,9 +12,22 @@ class Location(models.Model):
 
 #models for inages
 class Image(models.Model):
+    username = models.OneToOneField(User, on_delete=models.CASCADE,)
     image_location = models.ForeignKey(Location)
     image_path = models.ImageField(upload_to = 'gallery/')
     image_description = models.TextField()
+    
 
     def __str__(self):
         return self.image_description
+class Comments(models.Model):
+    comment=models.CharField(max_length=100)
+    user_id=models.ForeignKey(User,blank=True, on_delete=models.CASCADE,related_name='user',null=True)
+    image_id=models.ForeignKey(Image,blank=True, on_delete=models.CASCADE,related_name='image_comments',null=True)
+    date_posted=models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name_plural= 'Comments'
+
+    def __str__(self):
+        return self.comment

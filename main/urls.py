@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^home/$',views.home_index, name="homePage"),
     url(r'^$', views.signup),
     url(r'accounts/', include('django.contrib.auth.urls')),
+    url(r'comments/',views.save_comment, name='comment')
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
