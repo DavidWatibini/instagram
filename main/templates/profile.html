@@ -16,9 +16,14 @@
     <p id="p_h"><strong>2</strong> posts</p>
     <p id="p_hh"><strong>1</strong> Followers<strong>1</strong> Following</p>
     {% for prof in all_profile%}
-
     <h4 id="p_hhh">{{prof.last_name}}</h4>
 
+    <form method='post' action='{% url 'profile'%}'>
+      {% csrf_token %}
+      {{ forms }}
+      <input type="hidden" id="wati" name="user_id" value="{{user.id}}">
+      <input type="submit" name='Submit' value="Submit">
+    </form>
 
   </div>
 
@@ -26,10 +31,3 @@
 </div>
 
 {%endblock%}
-<!-- <img src="{{profile.profile_photo.url}}" alt="">
-<form method='post' action='{% url 'profile'%}'>
-  {% csrf_token %}
-  {{ forms }}
-  <input type="hidden" id="wati" name="user_id" value="{{user.id}}">
-  <input type="submit" name='Submit' value="Submit">
-</form> -->
