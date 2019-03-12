@@ -2,3 +2,15 @@
   margin-top: 70px;
   margin-left: 230px;
 }
+#one{
+  position: relative;
+  left: 25%;
+}
+#two{
+  position: relative;
+  left: 10%;
+}
+#three{
+  position: relative;
+  left:500px;
+}
