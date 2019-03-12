@@ -20,3 +20,42 @@ span{
 #margin{
   margin-left: 20px;
 }
+#img{
+  position: relative;
+  left: 160px;
+  top: 50px;
+  border: 1px solid;
+  border-radius: 50%;
+}
+#profile_h{
+  position: relative;
+  left:45%;
+  bottom: 90px;
+}
+#button_h{
+  position: relative;
+  left:60%;
+  bottom: 140px;
+}
+#fa_h{
+  position: relative;
+  left:60.9%;
+  bottom: 140px;
+}
+#p_h{
+  position: relative;
+  left:45.4%;
+  bottom: 80px;
+}
+#p_hh{
+  position: relative;
+  left:55.4%;
+  bottom: 120px;
+  margin-bottom: 70px;
+}
+#p_hhh{
+  position: relative;
+  left:45.4%;
+  bottom: 120px;
+  margin-bottom: 70px;
+}
