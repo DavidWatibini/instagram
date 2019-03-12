@@ -2,19 +2,24 @@
 {% block content %}
 {{ block.super}}
 {% load bootstrap4%}
-<div class="container-fluid">
+<div class="container">
   <div class="row">
-    <div class="col-sm-8">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-8">
       <br>
       <br>
       <br>
-      {% for image in index_images %}
-      <div class="card text-center">
-        <div class="card-header">
-          {{image.username}}<span>{{image.image_location}}</span>
+      <div class="card" style="width: 35rem;">
+
+        {% for image in index_images %}
+        <div id="margin">
+          <h5 class="card-title">{{image.username}}</h5>
+          <h6>{{image.image_location}}</h6>
         </div>
+        <img class="card-img-top" src="{{image.image_path.url}}" alt="{{user.username}}">
         <div class="card-body">
-          <a href="#"><img src="{{image.image_path.url}}" alt="{{user.username}}" height="600px"></a>
+          <p class="card-text">{{image.image_description}}</p>
         </div>
         <div class="card-footer text-muted">
           <form method='post' action='{% url 'comment'%}'>
@@ -23,22 +28,16 @@
             <input type="hidden" id="wati" name="image_id" value="{{image.id}}">
             <input type="submit" name='Submit' value="Submit">
           </form>
+        </div>
+        <ul class="list-group list-group-flush">
           {% for comment in comments%}
           {% if comment.image_id.id == image.id%}
-          <p>{{comment.comment}}</p>
-          <p>{{comment.date_posted}}</p>
-
+          <li class="list-group-item">{{comment.comment}}</li>
           {% endif %}
           {% endfor %}
-
-
-        </div>
+        </ul>
+        {% endfor %}
       </div>
-      {% endfor %}
-    </div>
-    <div class="col-md-4">
-      <p>Profile <a href="/profile">{{user.username}}</a></p>
-
     </div>
   </div>
 </div>
