@@ -4,30 +4,39 @@
 {% load bootstrap4%}
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-10">
+    <div class="col-sm-8">
+      <br>
+      <br>
+      <br>
       {% for image in index_images %}
-      <p>{{image.username}}</p>
-      <p>{{image.image_location}}</p>
-      <img src="{{image.image_path.url}}" alt="{{user.username}}" height="600px">
-      <form method='post' action='{% url 'comment'%}'>
-        {% csrf_token %}
-        {{ forms }}
-        <input type="hidden" id="wati" name="image_id" value="{{image.id}}">
-        <input type="submit" name='Submit' value="Submit">
-      </form>
+      <div class="card text-center">
+        <div class="card-header">
+          {{image.username}}<span>{{image.image_location}}</span>
+        </div>
+        <div class="card-body">
+          <a href="#"><img src="{{image.image_path.url}}" alt="{{user.username}}" height="600px"></a>
+        </div>
+        <div class="card-footer text-muted">
+          <form method='post' action='{% url 'comment'%}'>
+            {% csrf_token %}
+            {{ forms }}
+            <input type="hidden" id="wati" name="image_id" value="{{image.id}}">
+            <input type="submit" name='Submit' value="Submit">
+          </form>
+          {% for comment in comments%}
+          {% if comment.image_id.id == image.id%}
+          <p>{{comment.comment}}</p>
+          <p>{{comment.date_posted}}</p>
+
+          {% endif %}
+          {% endfor %}
 
 
-      {% for comment in comments%}
-      {% if comment.image_id.id == image.id%}
-      <p>{{comment.comment}}</p>
-      <p>{{comment.date_posted}}</p>
-
-      {% endif %}
-      {% endfor %}
-
+        </div>
+      </div>
       {% endfor %}
     </div>
-    <div class="col-md-2">
+    <div class="col-md-4">
       <p>Profile <a href="/profile">{{user.username}}</a></p>
 
     </div>
