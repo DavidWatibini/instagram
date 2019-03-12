@@ -2,13 +2,18 @@
 {% block content %}
 {{ block.super}}
 {% load bootstrap4%}
-{% for profile in profiles %}
+
 <p>{{profile.first_name}}</p><span>{{profile.last_name}}</span>
 <p>{{profile.user}}</p>
 <p>{{profile.first_name}}</p>
 <p>{{profile.website}}</p>
 <p>{{profile.bio}}</p>
 <img src="{{profile.profile_photo.url}}" alt="">
+<form method='post' action='{% url 'profile'%}'>
+  {% csrf_token %}
+  {{ forms }}
+  <input type="hidden" id="wati" name="user_id" value="{{user.id}}">
+  <input type="submit" name='Submit' value="Submit">
+</form>
 
-{% endfor %}
-{% endblock %}
+{%endblock%}

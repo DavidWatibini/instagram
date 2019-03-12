@@ -18,7 +18,7 @@ def signup(request):
     else:
         form = UserCreationForm()
 
-    return render(request,'signup.html', {"form":form})
+    return render(request,'signup.html',locals())
 
 #landing page - home page
 def home_index(request):
@@ -34,10 +34,18 @@ def save_comment(request):
     image_id = request.POST.get('image_id')
     image = get_object_or_404(Image, id=image_id)
     comments = Comments.objects.create(image_id=image,comment=comment)
-    # return HttpResponse('request')
     return redirect('homePage')
 
 def profile_index(request):
     profiles = Profile.objects.all()
+    forms=ProfileForm
+    all_profile = Profile.objects.all()
 
     return render(request,'profile.html', locals())
+
+def save_profile(request):
+    all_profile = request.Post.get('profile')
+    user_id = request.POST.get('user_id')
+
+    all_profile = Profile.objects.create(user_id=user,profile=profile)
+    return redirect('profile')
