@@ -7,7 +7,7 @@ from django.db.models.signals import post_save
 # Create your models here.
 #models for location
 class Location(models.Model):
-    location_det = models.CharField(max_length=50)
+    location_det = models.CharField(max_length=30)
 
     def __str__(self):
         return self.location_det
@@ -17,7 +17,7 @@ class Image(models.Model):
     username = models.OneToOneField(User, on_delete=models.CASCADE,)
     image_location = models.ForeignKey(Location)
     image_path = models.ImageField(upload_to = 'gallery/')
-    image_description = models.TextField()
+    image_description = models.CharField(max_length=100, blank=True)
 
 
     def __str__(self):
@@ -36,11 +36,11 @@ class Comments(models.Model):
 
 class Profile(models.Model):
     profile_photo = models.ImageField(upload_to = 'profiles/')
-    first_name=models.TextField(max_length=30, blank=True)
-    last_name=models.TextField(max_length=30, blank=True)
+    first_name=models.CharField(max_length=30, blank=True)
+    last_name=models.CharField(max_length=30, blank=True)
     user_id = models.OneToOneField(User, on_delete=models.CASCADE)
-    website=models.TextField(max_length=50, blank=True)
-    bio = models.TextField(max_length=100, blank=True)
+    website=models.CharField(max_length=50, blank=True)
+    bio = models.CharField(max_length=100, blank=True)
 
     def __str__(self):
         return self.first_name
