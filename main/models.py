@@ -41,7 +41,7 @@ class Profile(models.Model):
     user_id = models.OneToOneField(User, on_delete=models.CASCADE)
     website=models.CharField(max_length=50, blank=True)
     bio = models.CharField(max_length=100, blank=True)
-    
+
     def __str__(self):
         return self.first_name
 
@@ -51,7 +51,7 @@ class Profile(models.Model):
     @receiver(post_save,sender=User)
     def create_user_profile(sender,instance,created,**kwargs):
         if created:
-            UserProfile.objects.create(user=instance)
+            Profile.objects.create(user_id=instance)
 
     @receiver(post_save, sender=User)
     def save_user_profile(sender, instance, **kwargs):

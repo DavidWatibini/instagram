@@ -28,6 +28,7 @@ def home_index(request):
     comments = Comments.objects.all()
     return render(request,'home.html',locals())
 
+#comment view functions
 def save_comment(request):
     comment = request.POST.get('comment')
     print(comment)
@@ -36,8 +37,8 @@ def save_comment(request):
     comments = Comments.objects.create(image_id=image,comment=comment)
     return redirect('homePage')
 
+#profile page
 def profile_index(request):
-    # forms=ProfileForm
     all_profile = Profile.objects.all()
     profile = Profile.objects.get(user_id = request.user)
 
@@ -46,10 +47,3 @@ def profile_index(request):
         if form.is_valid():
             form.save()
     return render(request,'profile.html', locals())
-
-# def save_profile(request):
-#     all_profile = request.Post.get('profile')
-#     user_id = request.POST.get('user_id')
-#
-#     all_profile = Profile.objects.create(user_id=user,profile=profile)
-#     return redirect('profile')
