@@ -1,6 +1,6 @@
 # INSTAGRAM
 
-This is Photo Gallery built in python that allows users to view their favorite Photos.
+This is Photo Gallery built in python that allows users to view and share their favorite Photos.
 
 ## Author name
 
