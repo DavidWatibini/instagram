@@ -41,7 +41,7 @@ class Profile(models.Model):
     user_id = models.OneToOneField(User, on_delete=models.CASCADE)
     website=models.CharField(max_length=50, blank=True)
     bio = models.CharField(max_length=100, blank=True)
-
+    
     def __str__(self):
         return self.first_name
 

@@ -37,15 +37,19 @@ def save_comment(request):
     return redirect('homePage')
 
 def profile_index(request):
-    profiles = Profile.objects.all()
-    forms=ProfileForm
+    # forms=ProfileForm
     all_profile = Profile.objects.all()
+    profile = Profile.objects.get(user_id = request.user)
 
+    if request.method == 'POST':
+        form=ProfileForm(request.POST,request.FILES,instance=profile)
+        if form.is_valid():
+            form.save()
     return render(request,'profile.html', locals())
 
-def save_profile(request):
-    all_profile = request.Post.get('profile')
-    user_id = request.POST.get('user_id')
-
-    all_profile = Profile.objects.create(user_id=user,profile=profile)
-    return redirect('profile')
+# def save_profile(request):
+#     all_profile = request.Post.get('profile')
+#     user_id = request.POST.get('user_id')
+#
+#     all_profile = Profile.objects.create(user_id=user,profile=profile)
+#     return redirect('profile')

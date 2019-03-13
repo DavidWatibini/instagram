@@ -1,20 +1,29 @@
-{% extends 'base.html' %}
-{% block content %}
-{{ block.super}}
-<div class="container-fluid">
-  <div class="row">
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>Instagram</title>
+</head>
+
+<body>
+  <div class="container">
     <div class="index">
-      <div class="col-md-8">
-        <img src="https://instagram.com/static/images/homepage/home-phones.png/43cc71bb1b43.png" alt="instagram" height="550px" width="370px">
-      </div>
-      <div class="col-md-4">
-        <form class="" method="post">
-          {% csrf_token %}
-          {{form}}
-          <button type="submit" name="button">Sign Up</button>
-        </form>
-      </div>
+      <div class="row">
+          <div class="col-md-8">
+            <img src="https://instagram.com/static/images/homepage/home-phones.png/43cc71bb1b43.png" alt="instagram" height="550px" width="370px">
+          </div>
+          <div class="col-md-4">
+            <form class="" method="post">
+              {% csrf_token %}
+              {{form}}
+              <button type="submit" name="button">Sign Up</button>
+            </form>
+          </div>
+        </div>
     </div>
-  </div>
-</div>
-{% endblock %}
+    </div>
+</body>
+
+</html>
