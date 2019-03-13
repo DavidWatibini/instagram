@@ -25,7 +25,7 @@
           <form method='post' action='{% url 'comment'%}'>
             {% csrf_token %}
             {{ forms }}
-            <input type="hidden" id="wati" name="image_id" value="{{image.id}}">
+            <input type="hidden"  name="image_id" value="{{image.id}}">
             <input type="submit" name='Submit' value="Submit">
           </form>
         </div>
