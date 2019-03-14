@@ -57,7 +57,8 @@ def update_index(request):
     # all_profile = Profile.objects.all()
     profile = Profile.objects.get(user_id = request.user)
     if request.method == 'POST':
-        form=ProfileForm(request.POST,request.FILES,instance=profile)
+        form = UploadForm(request.POST,request.FILES)
+
         if form.is_valid():
             form.save()
             return redirect('profile')
