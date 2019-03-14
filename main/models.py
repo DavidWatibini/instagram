@@ -14,8 +14,8 @@ class Location(models.Model):
 
 #models for inages
 class Image(models.Model):
-    username = models.OneToOneField(User, on_delete=models.CASCADE,)
-    image_location = models.ForeignKey(Location)
+    # username = models.OneToOneField(User, on_delete=models.CASCADE,)
+    # image_location = models.ForeignKey(Location)
     image_path = models.ImageField(upload_to = 'gallery/')
     image_description = models.CharField(max_length=100, blank=True)
 

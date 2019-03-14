@@ -10,3 +10,9 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         exclude = ('first_name',)
+
+
+class UploadForm(forms.ModelForm):
+    class Meta:
+        model = Image
+        fields =['image_path']

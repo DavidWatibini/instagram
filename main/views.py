@@ -30,6 +30,7 @@ def home_index(request):
 
 #comment view functions
 def save_comment(request):
+
     comment = request.POST.get('comment')
     image_id = request.POST.get('image_id')
     image = get_object_or_404(Image, id=image_id)
@@ -38,11 +39,23 @@ def save_comment(request):
 
 #profile page
 def profile_index(request):
-    all_profile = Profile.objects.all()
-    profile = Profile.objects.get(user_id = request.user)
-
     if request.method == 'POST':
-        form=ProfileForm(request.POST,request.FILES,instance=profile)
+        form = UploadForm(request.POST,request.FILES)
+
         if form.is_valid():
             form.save()
+            return redirect('profile')
+    else:
+        form =UploadForm()
+
+
+    images = Image.objects.all()
+
+    # all_profile = Profile.objects.all()
+    # profile = Profile.objects.get(user_id = request.user)
+    #
+    # if request.method == 'POST':
+    #     form=ProfileForm(request.POST,request.FILES,instance=profile)
+    #     if form.is_valid():
+    #         form.save()
     return render(request,'profile.html', locals())

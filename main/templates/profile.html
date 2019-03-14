@@ -15,9 +15,11 @@
   <div id="block">
     <p id="p_h"><strong>2</strong> posts</p>
     <p id="p_hh"><strong>1</strong> Followers<strong>1</strong> Following</p>
+
     {% for prof in all_profile%}
     <h4 id="p_hhh">{{prof.last_name}}</h4>
-
+      {% endfor %}
+<br>
     <form method='post' action='{% url 'profile'%}'>
       {% csrf_token %}
       {{ form }}
@@ -27,7 +29,29 @@
 
   </div>
 
-  {% endfor %}
 </div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<form method='POST' enctype="multipart/form-data">
+  {% csrf_token %}
+  {%for fields in form%}
+  {{ fields }}
+  {%endfor%}
+  <button type="submit" name="button">upload</button>
+</form>
+
+</div>
+<div class="">
+  {%for de in images%}
+  <img src="{{de.image_path.url}}" alt="">
+  {%endfor%}
+
+</div>
+
 
 {%endblock%}
