@@ -59,3 +59,18 @@ span{
   bottom: 120px;
   margin-bottom: 70px;
 }
+#move{
+  padding: 50%;
+}
+.index{
+  background-color: #e8e8e8;
+}
+.cd{
+  margin: 70px;
+  margin-left: 440px;
+  margin-right: 440px;
+  box-shadow: -1px 1px 16px -1px rgba(0, 0, 0, 0.75);
+  text-align: center;
+  padding: 30px;
+  align-content: center;
+}
